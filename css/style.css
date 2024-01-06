@@ -1,7 +1,7 @@
 /* ram course timeline = ramctl */
 :root {
-    --ramctl-step-width: 200px;
-    --ramctl-active-color: #64d76c;
+    --ramctl-step-width: 90px;
+    --ramctl-active-color: green;
 
     --ramctl-circle-size: 24px;
     --ramctl-half-circle-size: calc(var(--ramctl-circle-size) / 2);
