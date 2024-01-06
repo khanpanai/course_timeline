@@ -53,7 +53,6 @@ class block_course_timeline extends block_base {
 
         $array = array();
 
-        $array["options"] = $this->get_sections();
         $array["courses"] = $this->get_courses();
         $array['brand_color'] = get_config("theme_boost_union", "brandcolor");
         $this->content->text = $OUTPUT->render_from_template("block_course_timeline/default", $array);
@@ -71,25 +70,6 @@ class block_course_timeline extends block_base {
             $obj = new stdClass();
             $obj->value = $course->id;
             $obj->name = $course->fullname;
-            $res[] = $obj;
-        }
-
-        return $res;
-    }
-
-    function get_sections() {
-        global $DB;
-
-        $courseId = get_config("block_course_timeline", "courseId");
-
-        $query = "SELECT id, name from {course_sections} where course = ?";
-        $sectionList = $DB->get_records_sql($query, array($courseId));
-
-        $res = [];
-        foreach ($sectionList as $section) {
-            $obj = new stdClass();
-            $obj->value = $section->id;
-            $obj->name = $section->name;
             $res[] = $obj;
         }
 
