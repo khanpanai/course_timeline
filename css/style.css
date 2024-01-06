@@ -1,0 +1,104 @@
+/* ram course timeline = ramctl */
+:root {
+    --ramctl-step-width: 200px;
+    --ramctl-active-color: #64d76c;
+
+    --ramctl-circle-size: 24px;
+    --ramctl-half-circle-size: calc(var(--ramctl-circle-size) / 2);
+    --ramctl-step-height: 4px;
+
+    --ramctl-color: #888888;
+    --ramctl-step-label-width: 110px;
+
+    --ramctl-step-label-font-size: 16px;
+    --ramctl-step-hint-font-size: 12px;
+}
+
+.ramctl-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ramctl-content {
+    display: flex;
+}
+
+.ramctl-circle {
+    width: var(--ramctl-circle-size);
+    height: var(--ramctl-circle-size);
+    border-radius: 50%;
+    position: relative;
+    background-color: var(--ramctl-color);
+    cursor: pointer;
+}
+
+.ramctl-circle_active {
+    background-color: var(--ramctl-active-color);
+}
+
+.ramctl-circle-stack {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 8px;
+}
+
+.ramctl-timeline {
+    display: flex;
+    align-items: flex-end;
+    padding: 40px 24px;
+    overflow-x: auto;
+    min-width: 100%;
+}
+
+.ramctl-timeline-block {
+    display: flex;
+    align-items: flex-end;
+}
+
+.ramctl-step {
+    width: var(--ramctl-step-width);
+    height: var(--ramctl-step-height);
+    background-color: var(--ramctl-color);
+    margin-bottom: calc(calc(var(--ramctl-circle-size) - var(--ramctl-step-height)) / 2);
+}
+
+.ramctl-step_active {
+    background-color: var(--ramctl-active-color);
+}
+
+.ramctl-timeline-text {
+    position: absolute;
+    text-align: center;
+    bottom: -24px;
+    font-size: var(--ramctl-step-label-font-size);
+    width: var(--ramctl-step-label-width);
+    left: calc(-1 * calc(calc(var(--ramctl-step-label-width) / 2) - var(--ramctl-half-circle-size)));
+}
+
+.ramctl-hint-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: max-content;
+    opacity: 0;
+    transition: .4s opacity;
+    pointer-events: none;
+    left: calc(var(--ramctl-circle-size) + 8px);
+    top: 0;
+    bottom: 0;
+    z-index: 99999;
+    background-color: #343a40;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 8px;
+    margin: auto 0;
+}
+
+.ramctl-hint {
+    font-size: var(--ramctl-step-hint-font-size);
+}
+
+.ramctl-circle:hover .ramctl-hint-container {
+    opacity: 1;
+}

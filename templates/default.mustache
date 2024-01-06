@@ -1,0 +1,36 @@
+<style>
+    :root {
+        --ramctl-color: {{brand_color}};
+    }
+</style>
+<div class="ramctl-container">
+    <div class="ramctl-select-container">
+        <label for="ramctl-course-select">Select course</label>
+        <select name="ramctl-course-select" id="ramctl-course-select" class="select custom-select cal_courses_flt ml-1 mr-auto ramctl-select">
+            {{#courses}}
+                <option value="{{value}}">{{name}}</option>
+            {{/courses}}
+        </select>
+    </div>
+    <div class="ramctl-select-container" data-section-select>
+
+    </div>
+    <div class="ramctl-timeline">
+        <div class="ramctl-start ramctl-timeline-block" id="ramctl-start">
+            <div class="ramctl-circle ramctl-circle_active">
+                <span class="ramctl-timeline-text">Начало</span>
+            </div>
+            <div class="ramctl-step ramctl-step_active"></div>
+        </div>
+
+        <div id="ramctl-content" class="ramctl-content" style="display: flex;">
+
+        </div>
+
+        <div class="ramctl-end timeline-block">
+            <div class="ramctl-circle">
+                <span class="ramctl-timeline-text">Конец <span data-end></span></span>
+            </div>
+        </div>
+    </div>
+</div>

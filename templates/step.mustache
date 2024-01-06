@@ -1,0 +1,17 @@
+<div class="ramctl-timeline-block">
+    <div class="ramctl-circle-stack">
+        <div class="ramctl-circle {{#active}}ramctl-step_active{{/active}}">
+            <span class="ramctl-timeline-text">Неделя {{num}}</span>
+        </div>
+        {{#modules}}
+            <a href="{{link}}">
+                <div class="ramctl-circle  {{#active}}ramctl-circle_active{{/active}}">
+                    <div class="ramctl-hint-container">
+                        <span class="ramctl-hint">{{name}}</span>
+                    </div>
+                </div>
+            </a>
+        {{/modules}}
+    </div>
+    <div class="ramctl-step {{#active}}ramctl-step_active{{/active}}"></div>
+</div>
