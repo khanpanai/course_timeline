@@ -23,7 +23,4 @@
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Timeline';
-$string['termtitle'] = 'Term';
-$string['termstart'] = 'Start date';
-$string['termend'] = 'Finish date';
+$string['pluginname'] = 'Course timeline';

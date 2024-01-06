@@ -36,31 +36,5 @@ class block_course_timeline_edit_form extends block_edit_form {
      * @return void
      */
     public function specific_definition($mform) {
-
-        global $USER,$DB;
-        $courses = enrol_get_users_courses($USER->id, true);
-
-        $areanames = array();                                                                                                       
-        foreach ($courses as $key => $val) {                                                                          
-            $areanames[$val->id] = $val->fullname;                                                                  
-        }                    
-
-        $options = array(                                                                                                           
-            'multiple' => false,                                                  
-            'noselectionstring' => "Select enrolled course",                                                                
-        );   
-        $mform->addElement("header","courseinfo", "Course");
-
-        $mform->addElement('autocomplete', 'courseselector', "Course", $areanames, $options);
-
-        $mform->addElement('header', 'displayinfo', get_string('termtitle', "block_course_timeline"));
-
-        $mform->addElement('date_time_selector', 'termstart', get_string('termstart', "block_course_timeline"));
-        $mform->addRule('termstart', null, 'required', null, 'client');
-
-        $mform->addElement('date_time_selector', 'termend', get_string('termend', "block_course_timeline"));
-        $mform->addRule('termend', null, 'required', null, 'client');
-
-  
     }
 }

@@ -8,9 +8,6 @@ require_login();
 $secPerWeek = 604800;
 $sectionId = required_param('sectionId', PARAM_INT);
 
-echo get_max_timestamp_from_course_module($sectionId);
-echo get_max_timestamp_from_course_module($sectionId);
-
 function get_max_timestamp_from_course_module($courseId, $sectionId) {
     global $DB;
     $params = array();
