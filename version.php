@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_course_timeline';
-$plugin->release = '0.4.0';
+$plugin->release = '0.5.0';
 $plugin->version = 2023121200;
 $plugin->requires = 2022112800;
 $plugin->maturity = MATURITY_ALPHA;
