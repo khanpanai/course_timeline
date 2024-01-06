@@ -1,22 +1,50 @@
 import * as config from 'core/config';
+
+const courseCacheKey = "course_timeline_course_id";
+const sectionCacheKey = "course_timeline_section_id";
+
 export const init = async() => {
 
     const courseSelect = document.querySelector("[name='ramctl-course-select']");
 
-    await loadSections(courseSelect.value);
-    await initSections(courseSelect.value);
+    const cachedId = window.localStorage.getItem(courseCacheKey);
+
+    if (cachedId) {
+        const selectOptions = courseSelect.getElementsByTagName('option');
+        for (const option of selectOptions) {
+            if (option.value === cachedId) {
+                option.selected = true;
+            }
+        }
+    }
+    await loadSections(cachedId ?? courseSelect.value);
+    await initSections(cachedId ?? courseSelect.value);
     courseSelect.addEventListener('change', async function() {
+        window.localStorage.setItem(courseCacheKey, courseSelect.value);
         await loadSections(courseSelect.value);
         await initSections(courseSelect.value);
     });
 
 };
 
-const initSections = async (courseId) => {
+const initSections = async(courseId) => {
     const sectionSelect = document.querySelector("[name='ramctl-section-select']");
-    await loadTimeline(courseId, sectionSelect.value);
-    await loadEndTime(courseId, sectionSelect.value);
+
+    const cachedId = window.localStorage.getItem(sectionCacheKey);
+
+    if (cachedId) {
+        const selectOptions = sectionSelect.getElementsByTagName('option');
+        for (const option of selectOptions) {
+            if (option.value === cachedId) {
+                option.selected = true;
+            }
+        }
+    }
+
+    await loadTimeline(courseId, cachedId ?? sectionSelect.value);
+    await loadEndTime(courseId, cachedId ?? sectionSelect.value);
     sectionSelect.addEventListener('change', async function() {
+        window.localStorage.setItem("course_timeline_section_id", this.value);
         await loadTimeline(courseId, this.value);
         await loadEndTime(courseId, sectionSelect.value);
     });
